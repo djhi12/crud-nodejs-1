@@ -28,6 +28,11 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
 
 app.use('/api', itemsRouter);
 
+// Add a simple "Hello, World!" route for the root URL
+app.get('/', (req, res) => {
+    res.send('Hello, World!');
+});
+
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });
