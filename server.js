@@ -2,6 +2,8 @@ const express = require('express');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const itemsRouter = require('./routes/items');
+const swaggerUi = require('swagger-ui-express');
+const specs = require('./swagger'); // Import your Swagger configuration
 
 dotenv.config();
 
@@ -20,6 +22,9 @@ db.once('open', () => {
 });
 
 app.use(express.json());
+
+// Serve Swagger UI at the /api-docs route
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
 
 app.use('/api', itemsRouter);
 
