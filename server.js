@@ -22,7 +22,7 @@ db.once('open', () => {
 });
 
 app.use(express.json());
-
+// 
 // Serve Swagger UI at the /api-docs route
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs));
 
